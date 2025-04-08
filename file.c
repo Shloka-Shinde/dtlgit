@@ -1,26 +1,31 @@
 #include <stdio.h>
-#include <math.h>
+
 int main() {
-    double a, b;
+    int a, b, result;
     char op;
 
-    printf("Enter an expression (e.g. 2 + 3): ");
-    scanf("%lf %c %lf", &a, &op, &b);
+    printf("Enter hex expression (e.g. A + F): ");
+    scanf("%x %c %x", &a, &op, &b);
 
     switch (op) {
-        case '+': printf("Result: %.2lf\n", a + b); break;
-        case '-': printf("Result: %.2lf\n", a - b); break;
-        case '*': printf("Result: %.2lf\n", a * b); break;
+        case '+': result = a + b; break;
+        case '-': result = a - b; break;
+        case '*': result = a * b; break;
         case '/':
             if (b != 0)
-                printf("Result: %.2lf\n", a / b);
-            else
+                result = a / b;
+            else {
                 printf("Error: Division by zero\n");
+                return 1;
+            }
             break;
-	case '^': printf("Result: %.2lf\n", pow(a, b)); break;
-        default: printf("Invalid operator\n");
+        default:
+            printf("Invalid operator\n");
+            return 1;
     }
 
+    printf("Result in hex: %X\n", result);
     return 0;
 }
+
 
