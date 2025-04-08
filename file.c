@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <math.h>
 int main() {
     double a, b;
     char op;
@@ -17,6 +17,7 @@ int main() {
             else
                 printf("Error: Division by zero\n");
             break;
+	case '^': printf("Result: %.2lf\n", pow(a, b)); break;
         default: printf("Invalid operator\n");
     }
 
